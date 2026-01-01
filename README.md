@@ -1,3 +1,111 @@
-# Expozy-Open-Source
+Overview
+Expozy Modules provides seamless integration between your Expozy instance and popular open-source platforms. Connect your existing systems to leverage the full power of Expozy's headless commerce capabilities.
+Available Connectors
+PlatformStatusVersion✅ WordPressAvailable1.0.0⏳ MagentoComing Soon-⏳ ShopifyComing Soon-⏳ WooCommerceComing Soon-
 
-Website: https://expozy.com/
+WordPress Connector
+The WordPress connector allows you to integrate your WordPress site with Expozy, enabling seamless content and data synchronization.
+Features
+
+🔄 Two-way Sync - Synchronize content between WordPress and Expozy
+📦 Product Import - Import products from WordPress/WooCommerce
+📝 Content Management - Manage WordPress content through Expozy
+🔐 Secure Authentication - OAuth 2.0 based secure connection
+⚡ Real-time Updates - Webhook support for instant synchronization
+
+Requirements
+
+WordPress 5.0 or higher
+PHP 7.4 or higher
+Expozy Core instance running
+SSL certificate (recommended)
+
+Installation
+
+Download the Plugin
+Download the latest release from the Releases page.
+Install in WordPress
+
+   WordPress Admin → Plugins → Add New → Upload Plugin
+Upload the expozy-connector.zip file and activate the plugin.
+
+Configure Connection
+Navigate to Settings → Expozy in your WordPress admin panel.
+
+   Expozy API URL: https://your-expozy-instance.com/api
+   API Key: your-api-key
+
+Test Connection
+Click "Test Connection" to verify the integration is working correctly.
+
+Configuration
+php// wp-config.php (optional advanced configuration)
+
+define('EXPOZY_API_URL', 'https://your-expozy-instance.com/api');
+define('EXPOZY_API_KEY', 'your-api-key');
+define('EXPOZY_SYNC_INTERVAL', 300); // Sync interval in seconds
+define('EXPOZY_DEBUG', false);
+Usage
+Sync Products
+php// Manual sync trigger
+do_action('expozy_sync_products');
+
+// Sync specific product
+do_action('expozy_sync_product', $product_id);
+Webhooks
+The connector automatically registers webhooks for:
+
+product.created
+product.updated
+product.deleted
+order.created
+order.updated
+
+Hooks & Filters
+php// Modify data before sync
+add_filter('expozy_before_product_sync', function($data, $product_id) {
+    // Modify product data
+    return $data;
+}, 10, 2);
+
+// Action after successful sync
+add_action('expozy_after_sync', function($result) {
+    // Handle post-sync logic
+});
+
+Roadmap
+We're actively working on expanding our connector ecosystem:
+
+ Magento 2 Connector - Q2 2025
+ Shopify Connector - Q3 2025
+ WooCommerce Standalone - Q3 2025
+ PrestaShop Connector - Q4 2025
+ OpenCart Connector - Q4 2025
+
+Want to request a specific connector? Open an issue!
+
+Contributing
+We welcome contributions! Please see our Contributing Guide for details.
+
+Fork the repository
+Create your feature branch (git checkout -b feature/new-connector)
+Commit your changes (git commit -m 'Add new connector')
+Push to the branch (git push origin feature/new-connector)
+Open a Pull Request
+
+Development Setup
+bash# Clone the repository
+git clone https://github.com/expozy/expozy-modules.git
+
+# Navigate to connector directory
+cd expozy-modules/wordpress
+
+# Install dependencies
+composer install
+
+# Run tests
+composer test
+
+<p align="center">
+  Made with ❤️ by the <a href="https://expozy.com">Expozy</a> Team
+</p>
