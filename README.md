@@ -1,7 +1,3 @@
-<p align="center">
-  <img src="assets/expozy-modules-logo.png" alt="Expozy Modules" width="400">
-</p>
-
 <h1 align="center">Expozy Modules</h1>
 
 <p align="center">
